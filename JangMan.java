@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 public class JangMan {
 
+    /* 
+        Metodo para adquirir respuesta del usuario y comparar.
+        Aqui estaba probando el getAns con un hard code de la respuesta "L"
+    */
     private static boolean getAns(Scanner scanner) {
         String w = "L";
         System.out.println("Enter your guess: ");
@@ -15,10 +19,17 @@ public class JangMan {
             return false;
     }
 
+    /* 
+        Por hacer 
+    */
     private static void manageWord() {
         
     }
 
+    /* 
+        Metodo para leer las palabras de un file usando br.
+        En este estoy tratando de manejar las palabras mejor pero sigo fallando.
+    */
     private static void readFile(BufferedReader br, StringBuilder sb) throws IOException {
         String line = br.readLine();
         while (line != null) {
@@ -38,12 +49,16 @@ public class JangMan {
     Scanner scanner = new Scanner(System.in);
 
     readFile(br, sb);
+
     manageWord();
+
+    //Mas pruebas.
     if (getAns(scanner) != true) {
         System.out.println("not");
     }else
         System.out.println("tru");
 
+        
     br.close();
   }
 }
