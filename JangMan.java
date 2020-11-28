@@ -99,7 +99,7 @@ public class JangMan {
     }
 
     public static void main(String[] args) throws IOException {
-        int cnt = 0;
+        int cnt = 1;
         BufferedReader br = new BufferedReader(new FileReader("palabras.txt"));
         StringBuilder sb = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
