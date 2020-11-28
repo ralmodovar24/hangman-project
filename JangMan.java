@@ -39,7 +39,7 @@ public class JangMan {
         Random r = new Random();
         int randomNum = r.nextInt((10 - 0) + 1) + 0;
         while (line != null) {
-            // System.out.println(line);
+           
 
             if (count == randomNum) {
                
