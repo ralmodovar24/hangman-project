@@ -42,7 +42,7 @@ public class JangMan {
             // System.out.println(line);
 
             if (count == randomNum) {
-                System.out.println("llegue");
+               
                 palabraEscojida = line;
                 System.out.println(palabraEscojida);
             }
