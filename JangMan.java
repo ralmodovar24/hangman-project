@@ -23,21 +23,30 @@ public class JangMan {
     /*
      * Por hacer
      */
-    private static void manageWord() {
-
+    private static void manageWord(String palabraEscojida) {
+     
+        char ch[] = palabraEscojida.toCharArray() ;
+        for (char c : ch) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+             
     }
 
     /*
      * Metodo para leer las palabras de un file usando br. En este estoy tratando de
      * manejar las palabras mejor pero sigo fallando.
      */
-    private static void readFile(BufferedReader br, StringBuilder sb) throws IOException {
+    private static void readFile(BufferedReader br) throws IOException {
         String line = br.readLine();
 
         int count = 0;
         String palabraEscojida;
         Random r = new Random();
-        int randomNum = r.nextInt((10 - 0) + 1) + 0;
+        int randomNum = r.nextInt(10);
+        // System.out.println(randomNum);
+  
+        // System.out.println(line[randomNum]);
         while (line != null) {
            
 
@@ -45,33 +54,72 @@ public class JangMan {
                
                 palabraEscojida = line;
                 System.out.println(palabraEscojida);
+
+                manageWord(palabraEscojida);
             }
             count++;
             line = br.readLine();
 
         }
 
-        String fileAsString = sb.toString();
-        String[] arrOfStr = fileAsString.split("[\\n]", -1);
-        System.out.println(arrOfStr);
+        // String fileAsString = sb.toString();
+        // String[] arrOfStr = fileAsString.split("[=========]", 0);
+        // System.out.println(arrOfStr);
+    }
+    private static void scorePrnt(Scanner scanner, int cnt) {
+
+        if (getAns(scanner) == false) {
+            System.out.println();
+            System.out.println("Intento fallido");
+            cnt++;
+            
+        } else {
+            
+        }
+
+    }
+
+    private static void firstTurn(BufferedReader buffer, StringBuilder sb) throws IOException {
+        // String line = buffer.readLine();
+        // String fileAsString = sb.toString();
+        // String[] line = fileAsString.split("[=========]", 0);
+        String line = buffer.readLine();
+	    while (line != null) {
+	      sb.append(line).append("\n");
+	      line = buffer.readLine();
+	    }
+
+	    String fileAsString = sb.toString();
+        String[] arrOfStr = fileAsString.split("[=========]", -1);
+        System.out.println(arrOfStr[0]);
+        // for (int i = 0; i < arrOfStr.length-1; i++)
+		// {    		
+        //     System.out.println(arrOfStr[i]);		
+		// }
     }
 
     public static void main(String[] args) throws IOException {
-
+        int cnt = 0;
         BufferedReader br = new BufferedReader(new FileReader("palabras.txt"));
         StringBuilder sb = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
+        BufferedReader buffer = new BufferedReader(new FileReader("hangmanfigure.txt"));
 
-        readFile(br, sb);
+        firstTurn(buffer,sb);
+        readFile(br);
+        scorePrnt(scanner, cnt);
 
-        manageWord();
 
         // Mas pruebas.
-        if (getAns(scanner) != true) {
-            System.out.println("not");
-        } else
-            System.out.println("tru");
+        // if (getAns(scanner) != true) {
+        //     System.out.println("not");
+        // } else
+        //     System.out.println("tru");
 
         br.close();
+        buffer.close();
     }
+
+
+
 }
