@@ -14,7 +14,7 @@ public class JangMan {
         String w = "L";
         System.out.println("Enter your guess: ");
         String inputString = scanner.nextLine();
-        if (inputString == w) {
+        if (inputString.equalsIgnoreCase(w) ) {
             return true;
         } else
             return false;
@@ -23,13 +23,13 @@ public class JangMan {
     /*
      * Por hacer
      */
-    private static void manageWord(String palabraEscojida) {
+    private static char[] manageWord(String palabraEscojida) {
      
         char ch[] = palabraEscojida.toCharArray() ;
-        for (char c : ch) {
-            System.out.print(c + " ");
-        }
-        System.out.println();
+        // for (char c : ch) {
+        //     System.out.print(c + " ");
+        // }
+        return ch;
              
     }
 
@@ -66,23 +66,29 @@ public class JangMan {
         // String[] arrOfStr = fileAsString.split("[=========]", 0);
         // System.out.println(arrOfStr);
     }
-    private static void scorePrnt(Scanner scanner, int cnt) {
 
-        if (getAns(scanner) == false) {
-            System.out.println();
+
+    private static void scorePrnt(Scanner scanner, int cnt, BufferedReader buffer, StringBuilder sb)
+            throws IOException {
+
+        if (getAns(scanner) == false ) {
+ 
             System.out.println("Intento fallido");
-            cnt++;
-            
+            cnt+=9;
+            System.out.println(cnt);
+            firstTurn(buffer, sb, cnt, scanner);
         } else {
-            
+            System.out.println("Intento valido");
+            firstTurn(buffer, sb, cnt, scanner);
         }
 
     }
 
-    private static void firstTurn(BufferedReader buffer, StringBuilder sb) throws IOException {
+    private static void firstTurn(BufferedReader buffer, StringBuilder sb, int cnt, Scanner scanner) throws IOException {
         // String line = buffer.readLine();
         // String fileAsString = sb.toString();
         // String[] line = fileAsString.split("[=========]", 0);
+
         String line = buffer.readLine();
 	    while (line != null) {
 	      sb.append(line).append("\n");
@@ -91,30 +97,29 @@ public class JangMan {
 
 	    String fileAsString = sb.toString();
         String[] arrOfStr = fileAsString.split("[=========]", -1);
-        System.out.println(arrOfStr[0]);
+        System.out.println(arrOfStr[cnt]);
+        scorePrnt(scanner, cnt, buffer, sb);
         // for (int i = 0; i < arrOfStr.length-1; i++)
 		// {    		
-        //     System.out.println(arrOfStr[i]);		
-		// }
+        //     System.out.println(arrOfStr[i]);
+
+        // }
+
     }
 
     public static void main(String[] args) throws IOException {
-        int cnt = 1;
+
+        int cnt = 0;
         BufferedReader br = new BufferedReader(new FileReader("palabras.txt"));
         StringBuilder sb = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
         BufferedReader buffer = new BufferedReader(new FileReader("hangmanfigure.txt"));
 
-        firstTurn(buffer,sb);
         readFile(br);
-        scorePrnt(scanner, cnt);
+        firstTurn(buffer,sb, cnt, scanner);
+        scorePrnt(scanner, cnt, buffer, sb);
 
 
-        // Mas pruebas.
-        // if (getAns(scanner) != true) {
-        //     System.out.println("not");
-        // } else
-        //     System.out.println("tru");
 
         br.close();
         buffer.close();
