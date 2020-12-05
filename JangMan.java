@@ -52,18 +52,21 @@ public class JangMan {
 
     private static void scorePrnt(Scanner scanner, int cnt, BufferedReader buffer, StringBuilder sb, String ch)
             throws IOException {
-
-        if (getAns(scanner, ch) == false) {
-
-            System.out.println("Intento fallido");
-            cnt += 9;
-            System.out.println(cnt);
-            firstTurn(buffer, sb, cnt, scanner, ch);
-        } else {
-            System.out.println("Intento valido");
-            firstTurn(buffer, sb, cnt, scanner, ch);
+        if (cnt != 54) 
+        {
+            if (getAns(scanner, ch) == false) {
+                System.out.println("Intento fallido");
+                cnt += 9;
+                System.out.println(cnt);
+                firstTurn(buffer, sb, cnt, scanner, ch);
+            } else {
+                System.out.println("Intento valido");
+                firstTurn(buffer, sb, cnt, scanner, ch);
+            }
+        } else{
+            System.out.println("Perdiste!!");
+            System.exit(0);
         }
-
     }
 
     private static void firstTurn(BufferedReader buffer, StringBuilder sb, int cnt, Scanner scanner, String ch)
