@@ -14,7 +14,7 @@ public class JangMan {
         String w = "L";
         System.out.println("Enter your guess: ");
         String inputString = scanner.nextLine();
-        if (inputString.equalsIgnoreCase(w) ) {
+        if (inputString.equalsIgnoreCase(w)) {
             return true;
         } else
             return false;
@@ -24,13 +24,13 @@ public class JangMan {
      * Por hacer
      */
     private static char[] manageWord(String palabraEscojida) {
-     
-        char ch[] = palabraEscojida.toCharArray() ;
+
+        char ch[] = palabraEscojida.toCharArray();
         // for (char c : ch) {
-        //     System.out.print(c + " ");
+        // System.out.print(c + " ");
         // }
         return ch;
-             
+
     }
 
     /*
@@ -45,13 +45,12 @@ public class JangMan {
         Random r = new Random();
         int randomNum = r.nextInt(10);
         // System.out.println(randomNum);
-  
+
         // System.out.println(line[randomNum]);
         while (line != null) {
-           
 
             if (count == randomNum) {
-               
+
                 palabraEscojida = line;
                 System.out.println(palabraEscojida);
 
@@ -67,14 +66,13 @@ public class JangMan {
         // System.out.println(arrOfStr);
     }
 
-
     private static void scorePrnt(Scanner scanner, int cnt, BufferedReader buffer, StringBuilder sb)
             throws IOException {
 
-        if (getAns(scanner) == false ) {
- 
+        if (getAns(scanner) == false) {
+
             System.out.println("Intento fallido");
-            cnt+=9;
+            cnt += 9;
             System.out.println(cnt);
             firstTurn(buffer, sb, cnt, scanner);
         } else {
@@ -84,24 +82,25 @@ public class JangMan {
 
     }
 
-    private static void firstTurn(BufferedReader buffer, StringBuilder sb, int cnt, Scanner scanner) throws IOException {
+    private static void firstTurn(BufferedReader buffer, StringBuilder sb, int cnt, Scanner scanner)
+            throws IOException {
         // String line = buffer.readLine();
         // String fileAsString = sb.toString();
         // String[] line = fileAsString.split("[=========]", 0);
 
         String line = buffer.readLine();
-	    while (line != null) {
-	      sb.append(line).append("\n");
-	      line = buffer.readLine();
-	    }
+        while (line != null) {
+            sb.append(line).append("\n");
+            line = buffer.readLine();
+        }
 
-	    String fileAsString = sb.toString();
+        String fileAsString = sb.toString();
         String[] arrOfStr = fileAsString.split("[=========]", -1);
         System.out.println(arrOfStr[cnt]);
         scorePrnt(scanner, cnt, buffer, sb);
         // for (int i = 0; i < arrOfStr.length-1; i++)
-		// {    		
-        //     System.out.println(arrOfStr[i]);
+        // {
+        // System.out.println(arrOfStr[i]);
 
         // }
 
@@ -116,15 +115,11 @@ public class JangMan {
         BufferedReader buffer = new BufferedReader(new FileReader("hangmanfigure.txt"));
 
         readFile(br);
-        firstTurn(buffer,sb, cnt, scanner);
+        firstTurn(buffer, sb, cnt, scanner);
         scorePrnt(scanner, cnt, buffer, sb);
-
-
 
         br.close();
         buffer.close();
     }
-
-
 
 }
