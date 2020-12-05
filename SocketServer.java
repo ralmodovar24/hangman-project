@@ -113,9 +113,10 @@ public class SocketServer extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(30, 30, 150, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bg7.jpg"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 420, 410);
+        // jLabel1.setIcon(new
+        // javax.swing.ImageIcon(getClass().getResource("/bg7.jpg"))); // NOI18N
+        // jPanel1.add(jLabel1);
+        // jLabel1.setBounds(0, 0, 420, 410);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,8 +162,6 @@ public class SocketServer extends javax.swing.JFrame {
         output1 = output1.replace('C', '"');
         output1 = output1.replace('d', '$');
         output1 = output1.replace('D', '$');
-        output1 = output1.replace('e', '˜');
-        output1 = output1.replace('E', '˜');
         output1 = output1.replace('f', '%');
         output1 = output1.replace('F', '%');
         output1 = output1.replace('g', '^');
@@ -214,7 +213,6 @@ public class SocketServer extends javax.swing.JFrame {
         desencripcion = desencripcion.replace(';', 'b');
         desencripcion = desencripcion.replace('"', 'c');
         desencripcion = desencripcion.replace('$', 'd');
-        desencripcion = desencripcion.replace('˜', 'e');
         desencripcion = desencripcion.replace('%', 'f');
         desencripcion = desencripcion.replace('^', 'g');
         desencripcion = desencripcion.replace('&', 'h');
