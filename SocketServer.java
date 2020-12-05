@@ -38,8 +38,6 @@ public class SocketServer extends javax.swing.JFrame {
                     output.flush();
                     input = new ObjectInputStream(connection.getInputStream());
 
-                    whileChatting();
-
                 } catch (EOFException eofException) {
                 }
             }
