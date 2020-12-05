@@ -12,7 +12,17 @@ public class JangMan {
      */
     private static boolean getAns(Scanner scanner, String ch) {
         System.out.println("Enter your guess: ");
-        String inputString = scanner.nextLine();
+        String inputString = scanner.next();
+
+        ch.length();
+        for (int i = 0; i < ch.length(); i++) {
+            System.out.println("X");
+        }
+        //int idx = ch.indexOf(inputString);
+        //System.out.println(idx);
+
+
+
         return ch.contains(inputString);
     }
 
