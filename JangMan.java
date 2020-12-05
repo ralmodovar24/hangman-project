@@ -10,38 +10,22 @@ public class JangMan {
      * Metodo para adquirir respuesta del usuario y comparar. Aqui estaba probando
      * el getAns con un hard code de la respuesta "L"
      */
-    private static boolean getAns(Scanner scanner) {
-        String w = "L";
+    private static boolean getAns(Scanner scanner, String ch) {
         System.out.println("Enter your guess: ");
         String inputString = scanner.nextLine();
-        if (inputString.equalsIgnoreCase(w)) {
-            return true;
-        } else
-            return false;
+        return ch.contains(inputString);
     }
 
-    /*
-     * Por hacer
-     */
-    private static char[] manageWord(String palabraEscojida) {
-
-        char ch[] = palabraEscojida.toCharArray();
-        // for (char c : ch) {
-        // System.out.print(c + " ");
-        // }
-        return ch;
-
-    }
 
     /*
      * Metodo para leer las palabras de un file usando br. En este estoy tratando de
      * manejar las palabras mejor pero sigo fallando.
      */
-    private static void readFile(BufferedReader br) throws IOException {
+    private static String readFile(BufferedReader br) throws IOException {
         String line = br.readLine();
 
         int count = 0;
-        String palabraEscojida;
+        String palabraEscojida = null;
         Random r = new Random();
         int randomNum = r.nextInt(10);
         // System.out.println(randomNum);
@@ -53,8 +37,6 @@ public class JangMan {
 
                 palabraEscojida = line;
                 System.out.println(palabraEscojida);
-
-                manageWord(palabraEscojida);
             }
             count++;
             line = br.readLine();
@@ -64,25 +46,27 @@ public class JangMan {
         // String fileAsString = sb.toString();
         // String[] arrOfStr = fileAsString.split("[=========]", 0);
         // System.out.println(arrOfStr);
+        
+        return palabraEscojida;
     }
 
-    private static void scorePrnt(Scanner scanner, int cnt, BufferedReader buffer, StringBuilder sb)
+    private static void scorePrnt(Scanner scanner, int cnt, BufferedReader buffer, StringBuilder sb, String ch)
             throws IOException {
 
-        if (getAns(scanner) == false) {
+        if (getAns(scanner, ch) == false) {
 
             System.out.println("Intento fallido");
             cnt += 9;
             System.out.println(cnt);
-            firstTurn(buffer, sb, cnt, scanner);
+            firstTurn(buffer, sb, cnt, scanner, ch);
         } else {
             System.out.println("Intento valido");
-            firstTurn(buffer, sb, cnt, scanner);
+            firstTurn(buffer, sb, cnt, scanner, ch);
         }
 
     }
 
-    private static void firstTurn(BufferedReader buffer, StringBuilder sb, int cnt, Scanner scanner)
+    private static void firstTurn(BufferedReader buffer, StringBuilder sb, int cnt, Scanner scanner, String ch)
             throws IOException {
         // String line = buffer.readLine();
         // String fileAsString = sb.toString();
@@ -97,7 +81,7 @@ public class JangMan {
         String fileAsString = sb.toString();
         String[] arrOfStr = fileAsString.split("[=========]", -1);
         System.out.println(arrOfStr[cnt]);
-        scorePrnt(scanner, cnt, buffer, sb);
+        scorePrnt(scanner, cnt, buffer, sb, ch);
         // for (int i = 0; i < arrOfStr.length-1; i++)
         // {
         // System.out.println(arrOfStr[i]);
@@ -114,9 +98,9 @@ public class JangMan {
         Scanner scanner = new Scanner(System.in);
         BufferedReader buffer = new BufferedReader(new FileReader("hangmanfigure.txt"));
 
-        readFile(br);
-        firstTurn(buffer, sb, cnt, scanner);
-        scorePrnt(scanner, cnt, buffer, sb);
+        String ch = readFile(br);
+        firstTurn(buffer, sb, cnt, scanner, ch);
+        scorePrnt(scanner, cnt, buffer, sb, ch);
 
         br.close();
         buffer.close();
