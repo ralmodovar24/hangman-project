@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 public class JangMan {
 
+
     public ArrayList<String> letters = new ArrayList<>();
-    //final int MAXERROR = 7;
+
+
     /*
      * Metodo para adquirir respuesta del usuario y comparar. Aqui estaba probando
      * el getAns con un hard code de la respuesta "L"
@@ -22,6 +24,10 @@ public class JangMan {
             System.out.print("X");
         }
         System.out.println();
+        if(ch.contains(inputString)){
+            int index = ch.indexOf(inputString);
+            letters.add(index, inputString);
+        }
 /*
         System.out.println(letters.iterator());
         int idx = ch.indexOf(inputString);
@@ -74,13 +80,10 @@ public class JangMan {
             line = br.readLine();
 
         }
-
-        // String fileAsString = sb.toString();
-        // String[] arrOfStr = fileAsString.split("[=========]", 0);
-        // System.out.println(arrOfStr);
         
         return palabraEscojida;
     }
+
 
     private static void scorePrnt(Scanner scanner, int cnt, BufferedReader buffer, StringBuilder sb, String ch,
             ArrayList<String> letters)
