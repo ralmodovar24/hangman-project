@@ -24,10 +24,23 @@ public class JangMan {
             System.out.print("X");
         }
         System.out.println();
-        if(ch.contains(inputString)){
-            int index = ch.indexOf(inputString);
-            letters.add(index, inputString);
+
+        if (!letters.contains(inputString)){
+            if(ch.contains(inputString)){
+                int index = ch.indexOf(inputString);
+
+                // while (index >= 0) {
+                //     ch. = inputString.charAt(0);
+                //     index = ch.indexOf(inputString, index + 1);
+                // }
+
+
+                letters.add(index, inputString);
+                letters.remove(index+1);
+                System.out.println(letters.toString());
+            }
         }
+            
 /*
         System.out.println(letters.iterator());
         int idx = ch.indexOf(inputString);
@@ -80,7 +93,7 @@ public class JangMan {
             line = br.readLine();
 
         }
-        
+
         return palabraEscojida;
     }
 
@@ -127,13 +140,17 @@ public class JangMan {
     public static void main(String[] args) throws IOException {
 
         int cnt = 0;
-        ArrayList<String> letters = new ArrayList<>();
+        ArrayList<String> letters = new ArrayList<>(7);
         BufferedReader br = new BufferedReader(new FileReader("palabras.txt"));
         StringBuilder sb = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
         BufferedReader buffer = new BufferedReader(new FileReader("hangmanfigure.txt"));
 
+
         String ch = readFile(br);
+        for (int i = 0; i < ch.length(); i++) {
+            letters.add(i, "_");
+        }
         firstTurn(buffer, sb, cnt, scanner, ch, letters);
         scorePrnt(scanner, cnt, buffer, sb, ch, letters);
 
