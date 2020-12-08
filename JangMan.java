@@ -18,9 +18,7 @@ public class JangMan {
         String inputString = scanner.next();
 
         ch.length();
-        for (int i = 0; i < ch.length(); i++) {
-            System.out.print("X");
-        }
+
         System.out.println();
 
         if (!letters.contains(inputString)){
@@ -33,9 +31,13 @@ public class JangMan {
                 // }
 
 
-                letters.add(index, inputString);
-                letters.remove(index+1);
+                letters.set(index, inputString);
+                int otherIndex = ch.lastIndexOf(inputString);
+                if(otherIndex != index){
+                    letters.set(otherIndex, inputString);
+                }
                 System.out.println(letters.toString());
+                check(letters);
             }
         }
             
@@ -75,6 +77,13 @@ public class JangMan {
          * // c is now a letter entered letters.add(c); }
          */
         return ch.contains(inputString);
+    }
+
+    private static void check(ArrayList<String> letters) {
+        if (!letters.contains("_")) {
+            System.out.println("GANASTE!!!");
+            System.exit(0);
+        }
     }
 
     /*
