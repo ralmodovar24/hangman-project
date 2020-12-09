@@ -25,12 +25,6 @@ public class JangMan {
             if(ch.contains(inputString)){
                 int index = ch.indexOf(inputString);
 
-                // while (index >= 0) {
-                //     ch. = inputString.charAt(0);
-                //     index = ch.indexOf(inputString, index + 1);
-                // }
-
-
                 letters.set(index, inputString);
                 int otherIndex = ch.lastIndexOf(inputString);
                 if(otherIndex != index){
@@ -41,43 +35,9 @@ public class JangMan {
             }
         }
             
-/*
-        System.out.println(letters.iterator());
-        int idx = ch.indexOf(inputString);
-        System.out.println(idx);
-
-        if (!letters.contains(inputString)) {
-            // we check if word to find contains c
-            if (ch.contains(inputString)) {
-                 // if so, we replace _ by the character c
-                int index = ch.indexOf(inputString);
-
-                while (index >= 0) {
-                    wordFound[index] = c.charAt(0);
-                    index = wordToFind.indexOf(c, index + 1);
-                }
-            } else {
-                // c not in the word => error
-                nbErrors++;
-            }
-
-        }
-        /*
-         * System.out.println(letters.iterator()); int idx = ch.indexOf(inputString);
-         * System.out.println(idx);
-         * 
-         * if (!letters.contains(inputString)) { // we check if word to find contains c
-         * if (ch.contains(inputString)) { // if so, we replace _ by the character c int
-         * index = ch.indexOf(inputString);
-         * 
-         * while (index >= 0) { wordFound[index] = c.charAt(0); index =
-         * wordToFind.indexOf(c, index + 1); } } else { // c not in the word => error
-         * nbErrors++; }
-         * 
-         * // c is now a letter entered letters.add(c); }
-         */
         return ch.contains(inputString);
     }
+
 
     private static void check(ArrayList<String> letters) {
         if (!letters.contains("_")) {
@@ -161,6 +121,7 @@ public class JangMan {
         for (int i = 0; i < ch.length(); i++) {
             letters.add(i, "_");
         }
+        
         firstTurn(buffer, sb, cnt, scanner, ch, letters);
         scorePrnt(scanner, cnt, buffer, sb, ch, letters);
 
