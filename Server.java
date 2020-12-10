@@ -128,6 +128,7 @@ public class Server {
         try {
 
             ServerSocket serverSocket = new ServerSocket();
+            // cambiar ip string a el ip que va a usar
             InetSocketAddress address = new InetSocketAddress("25.3.4.27", 8000);
             serverSocket.bind(address);
             System.out.println("Aceptando conexiones...");
