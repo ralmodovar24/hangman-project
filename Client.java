@@ -1,6 +1,6 @@
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class Client {
     public static void main(String[] args) {
@@ -8,7 +8,7 @@ public class Client {
         try {
             Socket clientSocket = new Socket();
             System.out.println("Estableciendo conexión...");
-            InetSocketAddress address = new InetSocketAddress("localhost", 8000);
+            InetSocketAddress address = new InetSocketAddress("25.3.4.27", 8000);
             clientSocket.connect(address);
             InputStream input = clientSocket.getInputStream();
             OutputStream output = clientSocket.getOutputStream();
@@ -16,9 +16,19 @@ public class Client {
             ObjectInputStream objInput = new ObjectInputStream(input);
             Scanner kb = new Scanner(System.in);
 
-            System.out.println("Enter a word:");
-            objOutput.writeObject(kb.nextLine());
-            objOutput.flush();
+            System.out.println(((String) objInput.readObject()));
+            System.out.println(((String) objInput.readObject()));
+
+            while (true) {
+
+                objOutput.writeObject(kb.next());
+
+                System.out.println(((String) objInput.readObject()));
+                System.out.println(((String) objInput.readObject()));
+                System.out.println(((String) objInput.readObject()));
+                System.out.println(((String) objInput.readObject()));
+
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
