@@ -1,8 +1,0 @@
-1. Programar un metodo que lea el archivo de texto y decida una palabra en random para que dos usuarios la adivinen en dos instancias separadas de hangman
-
----> COMENTARIOS POR FAVOR <---
-
-Angel- metodo para lear del archivo de text de palabras.
-Ricardo- sockets connection files, display hangman different stages.
-Eduardo- manejo de palabra y contestacion de los usuarios.
-
