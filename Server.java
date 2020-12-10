@@ -140,9 +140,9 @@ public class Server {
 
             int cnt = 0;
             ArrayList<String> letters = new ArrayList<>(7);
-            BufferedReader br = new BufferedReader(new FileReader("./src/palabras.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("palabras.txt"));
             StringBuilder sb = new StringBuilder();
-            BufferedReader buffer = new BufferedReader(new FileReader("./src/hangmanfigure.txt"));
+            BufferedReader buffer = new BufferedReader(new FileReader("hangmanfigure.txt"));
 
             String ch = readFile(br);
             for (int i = 0; i < ch.length(); i++) {
