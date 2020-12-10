@@ -8,6 +8,7 @@ public class Client {
         try {
             Socket clientSocket = new Socket();
             System.out.println("Estableciendo conexión...");
+            // cambiar ip string a el ip que va a usar, tiene que ser el mismo que este en Server.java
             InetSocketAddress address = new InetSocketAddress("25.3.4.27", 8000);
             clientSocket.connect(address);
             System.out.println("Conectado!");
